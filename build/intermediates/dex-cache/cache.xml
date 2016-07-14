@@ -2,11 +2,53 @@
 <items version="2" >
 
     <item
-        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/libs/volley.jar"
+        jumboMode="false"
         revision="19.1.0"
-        sha1="e3d0ad7d86c7d54e62c4c2257593c0fd82253372">
-        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_cf07bb08f108a9a8bf669b4d921a3caea7e2ae79.jar" />
+        sha1="ce0c420f495126a4e08fe6dfec34cebc198ab9e9">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/debug/volley_5e787e92629aa7c39f6865a398bd2bcaceeb4e2b.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-19.1.0_32a787d1fb818d927b760db6b51eacde2de226bc.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/libs/commons-lang-2.6.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="0ce1edb914c94ebc388f086c6827e8bdeec71ac2">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/debug/commons-lang-2.6_8fe5b67207a48bc5c0fabd2e46281a28d3e45674.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/libs/disklrucache-2.0.2.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="93b399470e72c0bc8cb52379943b63c9aa586cd8">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/debug/disklrucache-2.0.2_7179a92c89f0e16e548dd2f2c13fea3db61636d8.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/libs/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/debug/gson-2.2.4_ca21629b03d9639f14f75d546e1ad4ebc08587c3.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0_8cc751aa0f1fcbb9dcd0fc2b81dba1af8cedbbea.jar" />
+    </item>
+    <item
+        jar="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/libs/commons-io-2.4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="/Users/shenjialong/AndroidStudioProjects/Bangbang/app/build/intermediates/pre-dexed/debug/commons-io-2.4_920a599ca0fd4a26add5c7d313177bda0cdab81e.jar" />
     </item>
 
 </items>
