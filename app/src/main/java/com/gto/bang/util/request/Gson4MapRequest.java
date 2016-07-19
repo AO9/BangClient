@@ -21,8 +21,9 @@ public class Gson4MapRequest extends GsonRequest<Map<String, Object>>{
      * @param listener
      * @param errorListener
      */
-    public Gson4MapRequest(Context context, String url, Map<String, String> headers, Response.Listener<Map<String, Object>> listener, Response.ErrorListener errorListener) {
-        super(context, url, null, headers, listener, errorListener);
+    public Gson4MapRequest(Context context, String url, Map<String, String> headers, Response.Listener<Map<String, Object>> listener,
+                           Response.ErrorListener errorListener,int method) {
+        super(context, url, null, headers, listener, errorListener,method);
     }
 
     @Override

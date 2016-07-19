@@ -29,8 +29,8 @@ public class GsonRequest<T> extends Request<T> {
      * @param headers Map of request headers
      */
     public GsonRequest(Context context, String url, Class<T> clazz, Map<String, String> headers,
-                       Response.Listener<T> listener, Response.ErrorListener errorListener) {
-        super(Method.GET, url, errorListener);
+                       Response.Listener<T> listener, Response.ErrorListener errorListener,int method) {
+        super(method, url, errorListener);
         mContext = context;
         this.clazz = clazz;
         this.headers = headers;
@@ -83,4 +83,5 @@ public class GsonRequest<T> extends Request<T> {
     public Context getContext() {
         return mContext;
     }
+
 }

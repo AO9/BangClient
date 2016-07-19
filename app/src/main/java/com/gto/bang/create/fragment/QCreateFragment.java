@@ -9,13 +9,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.gto.bang.R;
 import com.gto.bang.base.BaseInputFragment;
-import com.gto.bang.create.network.CreateRequest;
 import com.gto.bang.util.Constant;
 import com.gto.bang.util.VolleyUtils;
+import com.gto.bang.util.request.CustomRequest;
 
 import org.apache.commons.lang.StringUtils;
+
+import java.util.HashMap;
 
 /**
  * Created by shenjialong on 16/6/10 02:06.
@@ -29,6 +32,7 @@ public class QCreateFragment extends BaseInputFragment {
     Button question_save;
     TextView [] textViews;
     String [] inputHints=new String[]{"请填写问答题目","请填写问答内容"};
+
 
     public QCreateFragment() {
     }
@@ -45,21 +49,32 @@ public class QCreateFragment extends BaseInputFragment {
         View rootView=getView();
         question_describe=(TextView)rootView.findViewById(R.id.question_describe_et);
         question_theme=(TextView)rootView.findViewById(R.id.question_theme_et);
-        textViews=new TextView[]{question_describe,question_theme};
+        textViews=new TextView[]{question_theme,question_describe};
 
         question_save=(Button) rootView.findViewById(R.id.question_ok_btn);
 
         question_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("sjl","开始校验");
-                if(check()){
-                    Log.i("sjl","校验通过");
-                    //校验通过后拼接请求参数并向服务器发送请求
-                    StringBuilder sb=new StringBuilder();
-                    sb.append("title=").append(question_theme.getText().toString()).append("&content=")
-                            .append(question_describe.getText().toString()).append("&type=2&authorid=123");
-                    publish(sb.toString());
+
+                if(!isFlag()){
+                    Log.i("sjl","开始校验");
+                    if(check()){
+                        Log.i("sjl","校验通过");
+                        //校验通过后拼接请求参数并向服务器发送请求
+                        HashMap<String, String> params=new HashMap<String, String>();
+                        params.put("title",question_theme.getText().toString());
+                        params.put("content",question_describe.getText().toString());
+                        params.put("type","2");
+                        params.put("authorid","123");
+                        publish(params);
+
+
+                    }else{
+                        Log.i("sjl","校验失败");
+                        // 可以继续点击了
+                        setFlag(true);
+                    }
                 }
             }
         });
@@ -68,11 +83,14 @@ public class QCreateFragment extends BaseInputFragment {
     /**
      * 发布
      */
-    public void publish(String params) {
-        ResponseListener responseListener = new ResponseListener();
-        Log.i("sjl","url:"+ Constant.URL_BASE+ CreateRequest.AJAX+params);
-        CreateRequest.Request req = new CreateRequest.Request(
-                getActivity(), responseListener, responseListener, params);
+    public void publish(HashMap<String, String> params) {
+        Toast t = Toast.makeText(getActivity(), "正在发布问题...", Toast.LENGTH_SHORT);
+        t.show();
+
+        ResponseListener listener = new ResponseListener();
+        String url=Constant.URL_BASE+ Constant.ARTICLE_CREATE_AJAX;
+        CustomRequest req = new CustomRequest(getActivity(),listener,listener,params,url, Request.Method.POST);
+        Log.i("sjl","发布经验url:"+ url);
         req.setTag(getRequestTag());
         VolleyUtils.getRequestQueue(getActivity()).add(req);
     }
@@ -87,6 +105,7 @@ public class QCreateFragment extends BaseInputFragment {
             if(null==textViews[i].getText()|| StringUtils.isEmpty(textViews[i].getText().toString())){
                 Toast t = Toast.makeText(getActivity(), inputHints[i], Toast.LENGTH_SHORT);
                 t.show();
+                setFlag(true);
                 return false;
             }
         }

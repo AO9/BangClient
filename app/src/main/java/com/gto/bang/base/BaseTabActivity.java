@@ -83,7 +83,7 @@ public class BaseTabActivity extends BaseActivity implements ActionBar.TabListen
         }
         if(tabNum<3){
             //暂时解决 兼容 两个或者三个TAB标签的情形
-            ((TextView)findViewById(R.id.bang_e_section3)).setVisibility(View.GONE);
+            findViewById(R.id.bang_e_section3).setVisibility(View.GONE);
         }
     }
 
@@ -131,7 +131,7 @@ public class BaseTabActivity extends BaseActivity implements ActionBar.TabListen
         public void onClick(View v) {
             mPager.setCurrentItem(index);
         }
-    };
+    }
 
     /**
      * TAB切换效果

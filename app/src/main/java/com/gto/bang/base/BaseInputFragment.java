@@ -18,7 +18,17 @@ import java.util.Map;
  */
 public class BaseInputFragment extends Fragment {
 
-    String [] hints=new String[]{"发布成功","发布失败"};
+    private boolean flag=false;
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
+    String [] hints=new String[]{"发布成功","服务繁忙,请稍后重试"};
 
 
     public BaseInputFragment() {
@@ -58,9 +68,11 @@ public class BaseInputFragment extends Fragment {
      */
     public  class ResponseListener implements Response.Listener<Map<String, Object>>, Response.ErrorListener {
 
+        Toast t ;
         @Override
         public void onErrorResponse(VolleyError arg0) {
-
+            t = Toast.makeText(getActivity(), getHints()[1], Toast.LENGTH_SHORT);
+            t.show();
             Log.i("sjl",getRequestTag()+"response Error");
         }
 
@@ -69,12 +81,16 @@ public class BaseInputFragment extends Fragment {
 
             Log.i("sjl",getRequestTag()+"response"+res.toString());
             Object status=res.get("status");
-            Toast t ;
+
             Log.i("sjl","status:"+status+" data "+res.get("data").toString());
             if(null==status||!"1.0".equals(status.toString())){
-                t = Toast.makeText(getActivity(), getHints()[0], Toast.LENGTH_SHORT);
-            }else{
+                // 发布失败，提示稍后重试
                 t = Toast.makeText(getActivity(), getHints()[1], Toast.LENGTH_SHORT);
+                setFlag(true);
+            }else{
+                // 发布成功，回到前一个页面
+                t = Toast.makeText(getActivity(), getHints()[0], Toast.LENGTH_SHORT);
+                getActivity().finish();
             }
             t.show();
         }
